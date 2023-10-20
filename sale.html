@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="sale.css" />
+    <title>Sale</title>
+  </head>
+  <body>
+    <section>
+      <h2>To the end of autumn sales:</h2>
+    </section>
+    <div class="countdown">
+      <div class="timer">
+        <span id="days">00</span>
+        <span id="hours">00</span>
+        <span id="minutes">00</span>
+        <span id="seconds">00</span>
+      </div>
+      <div class="labels">
+        <span>Days</span>
+        <span>Hours</span>
+        <span>Minutes</span>
+        <span>Seconds</span>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      function updateCountdown() {
+        const targetDate = new Date("2023-12-31 00:00:00").getTime();
+        const currentDate = new Date().getTime();
+        const timeLeft = targetDate - currentDate;
+
+        if (timeLeft <= 0) {
+          document.getElementById("days").textContent = "00";
+          document.getElementById("hours").textContent = "00";
+          document.getElementById("minutes").textContent = "00";
+          document.getElementById("seconds").textContent = "00";
+        } else {
+          const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (timeLeft % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+          document.getElementById("days").textContent = formatTime(days);
+          document.getElementById("hours").textContent = formatTime(hours);
+          document.getElementById("minutes").textContent = formatTime(minutes);
+          document.getElementById("seconds").textContent = formatTime(seconds);
+        }
+      }
+
+      function formatTime(time) {
+        return time < 10 ? "0" + time : time;
+      }
+
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+    </script>
+  </body>
+</html>

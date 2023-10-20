@@ -1,0 +1,29 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.countdown {
+  text-align: center;
+  font-size: 24px;
+}
+
+.timer span {
+  display: inline-block;
+  margin: 0 20px;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.labels span {
+  display: inline-block;
+  margin: 0 20px;
+  font-size: 14px;
+  color: #333;
+}
